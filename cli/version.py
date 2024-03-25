@@ -1,6 +1,6 @@
 # -- coding: utf-8 --
 
-def version():
+def version(args):
     """
     cli: main.py version
     """

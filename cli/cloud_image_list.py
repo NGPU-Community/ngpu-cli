@@ -1,7 +1,7 @@
 # -- coding: utf-8 --
 
 
-def cloud_image_list():
+def cloud_image_list(args):
     """
     cli: main.py image-create
     @:arg: -n/--name <name> -t/--tag <tag> -f/--file <file> -d/--dir <dir>
