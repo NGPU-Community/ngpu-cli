@@ -14,8 +14,12 @@ def version_cmd(subparsers: any) -> None:
 def cloud_image_create_cmd(subparsers: any) -> None:
     # TODO add child parser for the "sum" command
     sub_parser = subparsers.add_parser('cloud-image-create', help='create docker image info, return image id')
-    sub_parser.add_argument('--name', metavar='N', type=str, nargs='+',
-                            help='docker image name')
+    sub_parser.add_argument('--name', type=str, help='docker image name', required=True)
+    sub_parser.add_argument('--wget-url', type=str, help='wget url download', required=True)
+    sub_parser.add_argument('--note', type=str, help='description')
+    sub_parser.add_argument('--start', type=str, help='docker run command', required=True)
+    sub_parser.add_argument('--ports', type=str, help='docker ports mapping')
+    sub_parser.add_argument('--docker-image-id', type=str, help='docker image id', required=True)
     sub_parser.set_defaults(func=cloud_image_create.cloud_image_create)
 
 
