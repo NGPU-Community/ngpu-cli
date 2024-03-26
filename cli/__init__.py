@@ -7,7 +7,6 @@ logging.basicConfig(level=logging.INFO,
 
 # logger = logging.getLogger(__name__)
 # logging.basicConfig(level=logging.DEBUG,
-#                     # format: 指定输出的格式和内容，format可以输出很多有用信息
 #                     format='%(asctime)s %(filename)s[line:%(lineno)d] %(levelname)s %(message)s',
 #                     datefmt='%a, %d %b %Y %H:%M:%S')
 
