@@ -10,7 +10,12 @@ from utils.cloud_utils import mock_login_cloud
 def cloud_image_create(args):
     """
     cli: main.py image-create
-    @:arg: -n/--name <name> -t/--tag <tag> -f/--file <file> -d/--dir <dir>
+    @:arg: --name=<name> image name string
+    @:arg: --wget-url=<url> download docker tar file url string, not dockerhub
+    @:arg: --note=<note> descirption for docker image
+    @:arg: --start=<start> docker run string
+    @:arg: --ports=<ports> docker run ports mapping string: ep. "8080:80,8081:81"
+    @:arg: --docker-image-id=<id> docker image id string
     """
     # mock login admin, get token
     login = mock_login_cloud()
@@ -51,7 +56,7 @@ def cloud_image_create(args):
 
     try:
         response = requests.post(url, json=data, headers=headers)
-        logging.info(response.json())
+        logging.info(response.text)
         if response.status_code == 200:
             logging.info('cloud-image-create result: image id[{}]'.format(response.json()['result']['image_id']))
             return
