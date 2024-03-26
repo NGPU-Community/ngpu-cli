@@ -7,6 +7,9 @@ The most powerful and modular stable diffusion GUI and backend.
 
 
 ## Installing
+```
+python -V: 3.12
+```
 
 
 
