@@ -1,7 +1,7 @@
 import argparse
 
 from cli import version, cloud_image_create, cloud_image_list, cloud_workspace_list, cloud_product_list, \
-    cloud_workspace_create
+    cloud_workspace_create, cloud_workspace_group_create, cloud_workspace_group_list
 
 from cli import node
 
@@ -38,6 +38,7 @@ def cloud_workspace_create_cmd(subparsers: any) -> None:
     sub_parser.add_argument('--node-num', type=int, help='need node num, if > 1, need do group', default=1)
     sub_parser.add_argument('--unit', type=str, help='need duration unit: hr, week, month', default="month")
     sub_parser.add_argument('--duration', type=int, help='need duration', default=1)
+
     sub_parser.set_defaults(func=cloud_workspace_create.cloud_workspace_create)
 
 
@@ -45,6 +46,18 @@ def cloud_workspace_list_cmd(subparsers: any) -> None:
     sub_parser = subparsers.add_parser('cloud-workspace-list', help='list workspace')
     sub_parser.add_argument('--id', type=str, help='workspace id')
     sub_parser.set_defaults(func=cloud_workspace_list.cloud_workspace_list)
+
+
+def cloud_workspace_group_create_cmd(subparsers: any) -> None:
+    sub_parser = subparsers.add_parser('cloud-workspace-group-create', help='create workspace group for many nodes')
+    sub_parser.add_argument('--name', type=str, help='cloud-image-list return image id', required=True)
+    sub_parser.set_defaults(func=cloud_workspace_group_create.cloud_workspace_group_create)
+
+
+def cloud_workspace_group_list_cmd(subparsers: any) -> None:
+    sub_parser = subparsers.add_parser('cloud-workspace-group-list', help='list workspace group')
+    sub_parser.add_argument('--id', type=str, help='workspace group id')
+    sub_parser.set_defaults(func=cloud_workspace_group_list.cloud_workspace_group_list)
 
 
 def cloud_product_list_cmd(subparsers: any) -> None:
@@ -103,6 +116,8 @@ if __name__ == '__main__':
     cloud_image_list_cmd(subparsers=subparsers)
     cloud_workspace_create_cmd(subparsers=subparsers)
     cloud_workspace_list_cmd(subparsers=subparsers)
+    cloud_workspace_group_create_cmd(subparsers=subparsers)
+    cloud_workspace_group_list_cmd(subparsers=subparsers)
     cloud_product_list_cmd(subparsers=subparsers)
 
     # node -> cli
