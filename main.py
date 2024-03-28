@@ -32,12 +32,14 @@ def cloud_image_list_cmd(subparsers: any) -> None:
 
 def cloud_workspace_create_cmd(subparsers: any) -> None:
     sub_parser = subparsers.add_parser('cloud-workspace-create', help='create workspace info, return workspace info')
-    sub_parser.add_argument('--name', type=str, help='docker image name', required=True)
+    sub_parser.add_argument('--name', type=str, help='workspace name', required=True)
     sub_parser.add_argument('--image-id', type=str, help='cloud-image-list return image id', required=True)
     sub_parser.add_argument('--product-id', type=str, help='cloud-product-list return product id', required=True)
-    sub_parser.add_argument('--node-num', type=int, help='need node num, if > 1, need do group', default=1)
     sub_parser.add_argument('--unit', type=str, help='need duration unit: hr, week, month', default="month")
     sub_parser.add_argument('--duration', type=int, help='need duration', default=1)
+    sub_parser.add_argument('--node-num', type=int, help='need node num, if > 1, need do group', default=1)
+    sub_parser.add_argument('--is-group', type=bool, help='if group, need group id param', default=False)
+    sub_parser.add_argument('--group-id', type=str, help='cloud-workspace-group-list return group id')
 
     sub_parser.set_defaults(func=cloud_workspace_create.cloud_workspace_create)
 
