@@ -18,7 +18,7 @@ def cloud_image_list(args):
         'Token': login,
     }
 
-    url = "{}/user/image/list".format(CLOUD_HOST)
+    url = "{}/ngpu/api/v1/cloud/image/list".format(CLOUD_HOST)
 
     response = requests.get(url, headers=headers)
     logging.info(response.text)

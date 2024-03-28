@@ -32,7 +32,7 @@ def cloud_image_create(args):
     image_type = 1
     wget_url = args.wget_url
 
-    url = "{}/user/image/create".format(CLOUD_HOST)
+    url = "{}/ngpu/api/v1/cloud/image/create".format(CLOUD_HOST)
 
     headers = {
         'Content-Type': 'application/json',
