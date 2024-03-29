@@ -1,7 +1,7 @@
 import argparse
 
 from cli import version, cloud_image_create, cloud_image_list, cloud_workspace_list, cloud_product_list, \
-    cloud_workspace_create, cloud_workspace_group_create, cloud_workspace_group_list
+    cloud_workspace_create, cloud_workspace_group_create, cloud_workspace_group_list, cloud_workspace_dispense_status
 
 from cli import node
 from gen_instance import p2s_medium, task_query, address_query
@@ -55,6 +55,12 @@ def cloud_workspace_group_create_cmd(subparsers: any) -> None:
     sub_parser = subparsers.add_parser('cloud-workspace-group-create', help='create workspace group for many nodes')
     sub_parser.add_argument('--name', type=str, help='cloud-image-list return image id', required=True)
     sub_parser.set_defaults(func=cloud_workspace_group_create.cloud_workspace_group_create)
+
+
+def cloud_workspace_dispense_status_cmd(subparsers: any) -> None:
+    sub_parser = subparsers.add_parser('cloud-workspace-dispense-status', help='workspace dispense status')
+    sub_parser.add_argument('--id', type=str, help='workspace id', required=True)
+    sub_parser.set_defaults(func=cloud_workspace_dispense_status.cloud_workspace_dispense_status)
 
 
 def cloud_workspace_group_list_cmd(subparsers: any) -> None:
