@@ -176,7 +176,7 @@ return:
 
 4. Create workspace
 
-- [Dump Case 1](####Case1)
+- [Case 1](#case1-create-workspace-for-image-when-you-have-the-required-parameter)
 
 ## Notes
 
