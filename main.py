@@ -4,6 +4,7 @@ from cli import version, cloud_image_create, cloud_image_list, cloud_workspace_l
     cloud_workspace_create, cloud_workspace_group_create, cloud_workspace_group_list
 
 from cli import node
+from gen_instance import p2s_medium, v2v_medium, i2i_medium, task_query, address_query
 
 
 def version_cmd(subparsers: any) -> None:
@@ -104,6 +105,38 @@ def node_query_node_incentive(subparsers: any) -> str:
     sub_parser.add_argument('--node-addr', help='Computer Node Address')
     sub_parser.set_defaults(func=node.node_query_node_incentive)
 
+#####for gen-instance actions by Ethan
+def geninstence_v2v(subparsers: any) -> None:
+    # Increase parameter calls for the Gen Instance v2v_medium interface
+    sub_parser = subparsers.add_parser('v2v_medium', help='gen_instance v2v_medium')
+    sub_parser.add_argument('--video_url', type=str, help='cloud address of video file', required=True)
+    sub_parser.add_argument('--text', type=str, help='Content used in the video.', required=True)
+    sub_parser.add_argument('--btc_address', type=str, help='BTC Address (used to check for AINN and other BRC20 assets', required=True)
+    sub_parser.set_defaults(func=v2v_medium.v2v_medium)
+
+def geninstence_p2s(subparsers: any) -> None:
+    # Increase parameter calls for the Gen-Instance p2s_medium interface
+    sub_parser = subparsers.add_parser('p2s_medium', help='gen_instance p2s_medium')
+    sub_parser.add_argument('--image_url', type=str, help='image cloud address used for making the video', required=True)
+    sub_parser.add_argument('--text', type=str, help='text content used in the video', required=True)
+    sub_parser.add_argument('--pronouncer', type=str, help='speaker used in the video', required=True)
+    sub_parser.add_argument('--backGroundName', type=str, help='background used in the video', required=True)
+    sub_parser.add_argument('--btc_address', type=str, help='BTC address (used to check for AINN and other BRC20 assets', required=True)
+    sub_parser.add_argument('--logo_url', type=str, help='logo cloud address used in the video')
+    sub_parser.set_defaults(func=p2s_medium.p2s_medium)
+
+def geninstence_taskQuery(subparsers: any) -> None:
+    # Increase parameter calls for the Gen-Instance task query interface
+    sub_parser = subparsers.add_parser('task_query', help='gen_instance task information query')
+    sub_parser.add_argument('--taskID', type=str, help='The task ID that needs to be queried', required=True)
+    sub_parser.set_defaults(func=task_query.task_query)
+
+def btcaddress_query(subparsers: any) -> None:
+    # Increase parameter calls for the Gen-Instance tasks query interface from user BTCAddress
+    sub_parser = subparsers.add_parser('address_query', help='gen_instance tasks information query from BTCAddress')
+    sub_parser.add_argument('--btcaddress', type=str, help='User BTC address required for query', required=True)
+    sub_parser.set_defaults(func=address_query.address_query)
+
 
 if __name__ == '__main__':
     # create main parser
@@ -132,6 +165,12 @@ if __name__ == '__main__':
     node_query_all_nodes(subparsers=subparsers)
     node_query_node(subparsers=subparsers)
     node_query_node_incentive(subparsers=subparsers)
+
+    # gen-instance
+    geninstence_v2v(subparsers=subparsers)
+    geninstence_p2s(subparsers=subparsers)
+    geninstence_taskQuery(subparsers=subparsers)
+    btcaddress_query(subparsers=subparsers)
 
     # end
     args = parser.parse_args()
