@@ -176,7 +176,7 @@ return:
 
 4. Create workspace
 
-- [Dump Case 1](#####Case1)
+- [Dump Case 1](####Case1)
 
 ## Notes
 
