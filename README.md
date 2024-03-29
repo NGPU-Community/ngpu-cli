@@ -25,6 +25,7 @@ To install packages, please pip install -r requirements.txt
 
 ## Running
 
+- cmd example:
 ```
 python --help, it returns all the parameters and descriptions. 
 python main.py version
@@ -39,6 +40,8 @@ python main.py query-node --node-addr 0x732637A3A3E0D335Dc00d9F8fba8a1033831Bf13
 python main.py query-node-incentive --node-addr 0x732637A3A3E0D335Dc00d9F8fba8a1033831Bf13   ### this is node address, and this node has been registered to wallet address, so cmd returns 0.
 python main.py query-node-incentive --node-addr 0xdc49c76d46ba35802013400d5d98e5fb8486d01f   ### this is wallet address, all incentives from all nodes. 
 ```
+
+### Cloud cmd introduction
 
 To obtain the final scheduling address, you need to perform the following steps:
 
@@ -177,6 +180,30 @@ return:
 4. Create workspace
 
 - [Case 1](#case1-create-workspace-for-image-when-you-have-the-required-parameter)
+
+
+5. Check workspace status
+
+```
+$ python main.py cloud-workspace-dispense-status --id="xxx"
+
+return: workspace: id: [xxx], name: [xxx] dispense success
+```
+
+6. Scheduling URL
+
+```
+
+POST https://xxxx
+
+header {
+  WorkspaceId: ""
+}
+```
+
+
+
+
 
 ## Notes
 
