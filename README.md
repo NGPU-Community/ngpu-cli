@@ -192,6 +192,8 @@ return: workspace: id: [xxx], name: [xxx] dispense success
 
 6. Scheduling URL
 
+- Wait workspace dispense success
+
 ```
 
 POST https://xxxx
@@ -201,8 +203,41 @@ header {
 }
 ```
 
+### Node cmd introduction
+
+#### Node join NGPU network
+
+1. New Account
+```
+$ python main.py new-account
+
+return: node-address(ETH address)
+```
+
+2. Node register
+```
+$ python main.py register-node
+    --node-addr="xxx"
+    --organization="xxx"
+    --wallet-account="xxx"
+```
+
+Parameter:
+- node-addr: from new-account return
+- organization: customize by yourself
+- wallet-account: eth wallet address for yourself
+
+3. Go to PC and install node client
 
 
+
+4. Get node information
+
+```
+python main.py query-all-nodes  
+python main.py query-node --node-addr 0x732637A3A3E0D335Dc00d9F8fba8a1033831Bf13 
+python main.py query-node-incentive --node-addr 0x732637A3A3E0D335Dc00d9F8fba8a1033831Bf13 
+```
 
 
 ## Notes
