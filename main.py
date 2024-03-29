@@ -4,7 +4,7 @@ from cli import version, cloud_image_create, cloud_image_list, cloud_workspace_l
     cloud_workspace_create, cloud_workspace_group_create, cloud_workspace_group_list
 
 from cli import node
-from gen_instance import p2s_medium, v2v_medium, i2i_medium, task_query, address_query
+from gen_instance import p2s_medium, task_query, address_query
 
 
 def version_cmd(subparsers: any) -> None:
@@ -53,7 +53,7 @@ def cloud_workspace_list_cmd(subparsers: any) -> None:
 
 def cloud_workspace_group_create_cmd(subparsers: any) -> None:
     sub_parser = subparsers.add_parser('cloud-workspace-group-create', help='create workspace group for many nodes')
-    sub_parser.add_argument('--name', type=str, help='group name, not recur', required=True)
+    sub_parser.add_argument('--name', type=str, help='cloud-image-list return image id', required=True)
     sub_parser.set_defaults(func=cloud_workspace_group_create.cloud_workspace_group_create)
 
 
@@ -106,14 +106,6 @@ def node_query_node_incentive(subparsers: any) -> str:
     sub_parser.set_defaults(func=node.node_query_node_incentive)
 
 #####for gen-instance actions by Ethan
-def geninstence_v2v(subparsers: any) -> None:
-    # Increase parameter calls for the Gen Instance v2v_medium interface
-    sub_parser = subparsers.add_parser('v2v_medium', help='gen_instance v2v_medium')
-    sub_parser.add_argument('--video_url', type=str, help='cloud address of video file', required=True)
-    sub_parser.add_argument('--text', type=str, help='Content used in the video.', required=True)
-    sub_parser.add_argument('--btc_address', type=str, help='BTC Address (used to check for AINN and other BRC20 assets', required=True)
-    sub_parser.set_defaults(func=v2v_medium.v2v_medium)
-
 def geninstence_p2s(subparsers: any) -> None:
     # Increase parameter calls for the Gen-Instance p2s_medium interface
     sub_parser = subparsers.add_parser('p2s_medium', help='gen_instance p2s_medium')
@@ -172,6 +164,12 @@ if __name__ == '__main__':
     geninstence_taskQuery(subparsers=subparsers)
     btcaddress_query(subparsers=subparsers)
 
-    # end
+    # Parse the arguments
     args = parser.parse_args()
-    args.func(args)
+
+    # Check if 'func' attribute exists, then call it
+    if hasattr(args, 'func'):
+        args.func(args)
+    else:
+        # Print help message if 'func' is not set
+        parser.print_help()

@@ -5,6 +5,11 @@ import time
 import json
 from .include import GEN_INSTANCE_HOST
 
+''' Startup command: 
+    /bin/python3 
+    -- /home/fxh7622/ngpu-cli/main.py address_query 
+    --btcaddress bc1pp8vyhh2ma0ntzjwr26xxrn5r0w296yu68wdwle5rrhgtv3a2lgkqtyayus'''
+
 # Query the task information.
 def queryTasks(btcaddress):
     funName = "queryTasks"
@@ -35,8 +40,8 @@ def queryTasks(btcaddress):
 
 def address_query(args):
     """
-    cli: main.py address_query
-    @:arg: -n/--name <name> -t/--tag <tag> -f/--file <file> -d/--dir <dir>
+    cli: main.py task_query
+    @:arg: --btcaddress=<btcaddress> User BTC address required for query
     """
     funName = "address_query"
     btcaddress = args.btcaddress
@@ -44,7 +49,7 @@ def address_query(args):
     logging.info('{} Query task list based on the user BTC address btcaddress={}'.format(funName, btcaddress))
     success, resBody = queryTasks(btcaddress)
     if success:
-        formatted_json = json.dumps(resBody, indent=2)
+        formatted_json = json.dumps(resBody, indent=4)
         logging.info('{} Query Task information btcaddress={} \n resBody={}'.format(funName, btcaddress, formatted_json))
         return
 

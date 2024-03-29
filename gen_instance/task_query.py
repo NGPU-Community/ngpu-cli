@@ -5,6 +5,11 @@ import time
 import json
 from .include import GEN_INSTANCE_HOST
 
+''' Startup command: 
+    /bin/python3 
+    -- /home/fxh7622/ngpu-cli/main.py task_query 
+    --taskID 20240329_09_37_16_458230'''
+
 # Query the task information.
 def queryTask(taskID):
     funName = "queryTask"
@@ -36,7 +41,7 @@ def queryTask(taskID):
 def task_query(args):
     """
     cli: main.py task_query
-    @:arg: -n/--name <name> -t/--tag <tag> -f/--file <file> -d/--dir <dir>
+    @:arg: --taskID=<taskID> The task ID that needs to be queried
     """
     funName = "task_query"
     taskID = args.taskID
@@ -44,7 +49,7 @@ def task_query(args):
     logging.info('{} Query Task information taskID={}'.format(funName, taskID))
     success, resBody = queryTask(taskID)
     if success:
-        formatted_json = json.dumps(resBody, indent=2)
+        formatted_json = json.dumps(resBody, indent=4)
         logging.info('{} Query Task information taskID={} \n resBody={}'.format(funName, taskID, formatted_json))
         return
 

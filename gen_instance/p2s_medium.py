@@ -5,6 +5,15 @@ import time
 import json
 from .include import GEN_INSTANCE_HOST
 
+''' Startup command: 
+    /bin/python3 
+    -- /home/fxh7622/ngpu-cli/main.py p2s_medium 
+    --image_url https://obai.aimc.digital/20240328170028340811.jpg 
+    --text Hello\ everyone,\ I\ am\ AI-generated\ Musk 
+    --pronouncer en-US-GuyNeural 
+    --backGroundName https://obai.aimc.digital/background/AINN_BG.png 
+    --btc_address bc1pp8vyhh2ma0ntzjwr26xxrn5r0w296yu68wdwle5rrhgtv3a2lgkqtyayus'''
+
 # Initiate a task.
 def sendTask(image_url, text, pronouncer, backGroundName, btc_address, logo_url):
     funName = "sendTask"
@@ -27,7 +36,7 @@ def sendTask(image_url, text, pronouncer, backGroundName, btc_address, logo_url)
     try:
         response = requests.post(url, json=data, headers=headers)
         #Print the returned content
-        logging.info(json.dumps(response.json(), indent=2))
+        logging.info(json.dumps(response.json(), indent=4))
         #check status code
         if response.status_code == 200:
             taskID = response.json()['task_id']
@@ -56,7 +65,7 @@ def checkTask(taskID):
     try:
         response = requests.get(url, headers=headers)
         #Print the returned content
-        logging.info(json.dumps(response.json(), indent=2))
+        logging.info(json.dumps(response.json(), indent=4))
         #check status code
         if response.status_code == 200:
             resultCode = response.json()['result_code']
@@ -75,7 +84,12 @@ def checkTask(taskID):
 def p2s_medium(args):
     """
     cli: main.py p2s_medium
-    @:arg: -n/--name <name> -t/--tag <tag> -f/--file <file> -d/--dir <dir>
+    @:arg: --image_url=<image_url> image cloud address used for making the video
+    @:arg: --text=<text> text content used in the video
+    @:arg: --pronouncer=<pronouncer> speaker used in the video
+    @:arg: --backGroundName=<backGroundName> background used in the video
+    @:arg: --btc_address=<btc_address> BTC address (used to check for AINN and other BRC20 assets
+    @:arg: --logo_url=<logo_url> logo cloud address used in the video
     """
     funName = "p2s_medium"
     image_url = args.image_url
