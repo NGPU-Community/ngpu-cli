@@ -53,7 +53,7 @@ def cloud_workspace_list_cmd(subparsers: any) -> None:
 
 def cloud_workspace_group_create_cmd(subparsers: any) -> None:
     sub_parser = subparsers.add_parser('cloud-workspace-group-create', help='create workspace group for many nodes')
-    sub_parser.add_argument('--name', type=str, help='cloud-image-list return image id', required=True)
+    sub_parser.add_argument('--name', type=str, help='group name, not recur', required=True)
     sub_parser.set_defaults(func=cloud_workspace_group_create.cloud_workspace_group_create)
 
 
