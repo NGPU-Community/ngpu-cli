@@ -72,7 +72,7 @@ Return:
 
 - address: The node address you applied for is used as the registered node
 
-##### 2.  register node
+##### 2. register node
 
 ```
 $ python main.py register-node
@@ -142,7 +142,7 @@ Parameter:
 ###### 1.1 create image
 
 ```
-$ python main.py cloud-image-create --name="xxx" \
+$ python main.py cloud-image-create --name=<str> \
     --name=<str>
     --wget-url=<str>
     --note=<str>
@@ -163,6 +163,7 @@ Parameter:
 - docker-image-id: Docker image id from `$ docker images` info.
 
 Return:
+
 - image id: used in cloud-workspace-create
 
 ###### 1.2 image list of creating history (ignorable)
@@ -197,7 +198,7 @@ return:
 ###### 2.1 create group
 
 ```
-$ python main.py cloud-workspace-group-create --name="xxx"
+$ python main.py cloud-workspace-group-create --name=<str>
     
 return: workspace group id [312243674765329408]
 ```
@@ -259,13 +260,12 @@ return:
 
 - [Case 1](#case1-create-workspace-for-image-when-you-have-the-required-parameter)
 
-
 ##### 5. Check workspace status
 
 ```
-$ python main.py cloud-workspace-dispense-status --id="xxx"
+$ python main.py cloud-workspace-dispense-status --id=<str>
 
-return: workspace: id: [xxx], name: [xxx] dispense success
+return: workspace: id: [<str>], name: [<str>] dispense success
 ```
 
 ##### 6. Scheduling URL
@@ -274,11 +274,21 @@ return: workspace: id: [xxx], name: [xxx] dispense success
 
 ```
 
-POST https://xxxx
+POST https://<host>:<port>/router
 
 header {
   WorkspaceId: ""
 }
+
+body: Depends on how your image api is defined
+
+```
+
+### Call AI example cmd introduction
+
+```
+
+
 ```
 
 ## QA
