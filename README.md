@@ -5,7 +5,7 @@ python cmd for ngpu main api calls.
 
 ## Features
 
-```
+```shell
 1. calculation node: 
 .New address (node_new_account), 
 .Bind node address with wallet address (node_register_node)
@@ -18,109 +18,132 @@ python cmd for ngpu main api calls.
 
 ## Notes
 
-* [Running module](#Running)
-    * [Node cmd part](#Node-cmd-introduction): If you want to provide GPU for NGPU, read this note
-    * [Cloud cmd part](#Cloud-cmd-introduction): If you want to use the GPU computing power in NGPU, read this note
-    * [Caller cmd part](#call-ai-example-cmd-introduction): If you want to call AI on NGPU, read this note
+* [General Commands](#General-Commands)If you're looking for general script commands, read this note.
+* [**Node part**](#Node-part): If you want to provide GPU for NGPU, read this note
+* [**Cloud part**](#Cloud-part): If you want to use the GPU computing power in NGPU, read this note
+* [**Caller part**](#Caller-part): If you want to call AI on NGPU, read this note
 
 ## Installing
 
-```
+```shell
 Python environment is 3.12, so run python -V, return 3.12
 To install packages, please pip install -r requirements.txt 
 ```
 
-## Running
+### General Commands
 
-- cmd example:
-
+```shell
+$ python3 main.py version
 ```
-python --help, it returns all the parameters and descriptions. 
-python main.py version
-python main.py cloud-image-create --name=<image name string> --wget-url=<docker tar wget url> --start=<docker run string> --docker-image-id=<docker image id>
-python main.py cloud-image-list
+cmd Name | Command Explanation
+----|:----:|
+version|Get the current script version information.
 
-For node part, the following cmd
-python main.py new-account
-python main.py register-node --node-addr 14d5459d13f16cadae01cc3acb8d97a4721e3652 --organization whoami --wallet-account 0xdc49c76d46ba35802013400d5d98e5fb8486d01f  ### node-addr is from new account. 
-python main.py query-all-nodes  
-python main.py query-node --node-addr 0x732637A3A3E0D335Dc00d9F8fba8a1033831Bf13 
-python main.py query-node-incentive --node-addr 0x732637A3A3E0D335Dc00d9F8fba8a1033831Bf13   ### this is node address, and this node has been registered to wallet address, so cmd returns 0.
-python main.py query-node-incentive --node-addr 0xdc49c76d46ba35802013400d5d98e5fb8486d01f   ### this is wallet address, all incentives from all nodes. 
+
+## **Node part**: 
+
+### Command Line Example and Explanation
+
+#### 1.  **new-account**
+```shell
+$ python3 main.py new-account
 ```
+Command Explanation：
+- Create a computational power node address (this address uses an ETH address, so ETH addresses obtained through other means can also be used).
 
-### Node cmd introduction
-
-🎉 Follow the steps, you can join the network and get incentives
-
-#### Node join NGPU network
-
-##### 1. Create New account
-
-```
-$ python main.py new-account
-
-return:  
+Response:
+```shell
 {
     "passWD": "888888",
     "fileName": "0xf942f1adc3bfc57cf075476236eee476199e853a_keystroe.json",
     "keystore": "{\"address\":\"f942f1adc3bfc57cf075476236eee476199e853a\",\"crypto\":{\"cipher\":\"aes-128-ctr\",\"ciphertext\":\"01993647630f506ed08a0897a2d5b9c070cd4d26da4178e27fa8c222ea25c2ee\",\"cipherparams\":{\"iv\":\"de459d6d742cdcfd49311a2bcc224777\"},\"kdf\":\"scrypt\",\"kdfparams\":{\"dklen\":32,\"n\":262144,\"p\":1,\"r\":8,\"salt\":\"3090949f8ca9e51f9a82abcbcd0f994f65367b399e86bc7d59b62f647e85dc5a\"},\"mac\":\"cf6e1997a3c62d7e47b5c414be5f4f20330d2ce77279024cd9fa5673df4f4532\"},\"id\":\"3010e90c-4478-42d3-b8ef-79ddd0cadd3a\",\"version\":3}"
 }
 ```
+Parameter:
+- --passWD: Create a generated keystore password
+- --fileName: Create a generated keystore file name
+- --keystore: Create the content of the generated keystore file
 
-Return:
-
-- keystore.address: The node address you applied for is used as the registered node
-
-##### 2. register node
-
+#### 2. **register-node**
+```shell
+$ python3 main.py register-node --node-addr < Computational Power Node Address > --organization < Organization Name > --wallet-account < Wallet Address >
 ```
-$ python main.py register-node
-    --node-addr=<new-account return address>
-    --organization=<customize by yourself>
-    --wallet-account=<your eth address>
-```
+Command Explanation:
+- Register a computational power node on AINNGPU
 
 Parameter:
+- --node-addr: from new-account return
+- --organization: customize by yourself
+- --wallet-account: your eth address(incentive address), not node-address
 
-- node-addr: from new-account return
-- organization: customize by yourself
-- wallet-account: your eth address(incentive address), not node-address,
+#### 3. **query-all-nodes**
+```shell
+$ python3 main.py query-all-nodes 
+```
+Command Explanation:
+- Query all current computational power nodes
 
-##### 3. Go to PC and install node client
 
+#### 4. **query-node**
+```shell
+$ python3 main.py query-node --node-addr 0x732637A3A3E0D335Dc00d9F8fba8a1033831Bf13 
+```
+Command Explanation:
+- Retrieve detailed information of a computational power node based on its address
+
+Parameter:
+- --node-addr: The computational power node address you need to query
+
+#### 5. **query-node-incentive**
+```shell
+$ python3 main.py query-node-incentive --node-addr 0x732637A3A3E0D335Dc00d9F8fba8a1033831Bf13 
+```
+Command Explanation:
+- Query all current computational power nodes
+
+Parameter:
+- --node-addr: The computational power node address you need to query
+
+
+### **_Operation Steps_**
+1. **Step One**: Create a computational power node address (you can skip this step if you already have an ETH address).
+```shell
+$ python3 main.py new-account
+```
+<span style="color:red;"> Assuming the returned address is: 0x732637A3A3E0D335Dc00d9F8fba8a1033831Bf13 </span>
+
+2. **Step Two**: Register the computational power node address with the AINNGPU platform.
+```shell
+$ python3 main.py query-node --node-addr 0x732637A3A3E0D335Dc00d9F8fba8a1033831Bf13 
+```
+3. **Step Three**: Run the computational power node installation script
 - [node client install](https://github.com/AINNGPU-Community/ngpu-install-script)
 - You may need to wait for the network to measure your PC after installation
 
-##### 4. Get node information
-
-```
-python main.py query-all-nodes  
-python main.py query-node --node-addr 0x732637A3A3E0D335Dc00d9F8fba8a1033831Bf13 
-python main.py query-node-incentive --node-addr 0x732637A3A3E0D335Dc00d9F8fba8a1033831Bf13 
+4. **Step Four**: Query the incentive amount received by the computational power node
+```shell
+$ python3 main.py query-node-incentive --node-addr 0x732637A3A3E0D335Dc00d9F8fba8a1033831Bf13
 ```
 
-### Cloud cmd introduction
+## Cloud part
 
-Follow the steps below to use GPU computing power on the network for your own AI programs:
+### Command Line Example and Explanation
 
-#### Case1: create workspace for image when you have the required parameter
-
+#### 1. create workspace
+```shell
+$ python3 main.py cloud-workspace-create --name=< workspace name for yourself > \
+    --image-id=< one of cloud-image-list return > \
+    --product-id=< one of cloud-product-list > \
+    --unit=< one of "hr" or "week" or "month" > \
+    --duration=< int > \
+    --node-num=< int > \
+    --is-group=< true or false >
+    --group-id=< one of cloud-workspace-group-list return >
 ```
-$ python main.py cloud-workspace-create --name=<workspace name for yourself> \
-    --image-id=<one of cloud-image-list return> \
-    --product-id=<one of cloud-product-list> \
-    --unit=<one of "hr" or "week" or "month"> \
-    --duration=<int> \
-    --node-num=<int> \
-    --is-group=<true or false>
-    --group-id=<one of cloud-workspace-group-list return>
-    
-return: workspace id [<str>]
-```
+Command Explanation:
+- Create a workspace
 
 Parameter:
-
 - name: required. The name of the created workspace, unique.
 - image-id: required. From cloud-image-list cmd, return id in json map item. If you want to create image, refer to
   cloud-image-create cmd.
@@ -131,27 +154,23 @@ Parameter:
 - is-group: default `false`, if node-num > 1, it is `true`.
 - group-id: if is-group is `true`, setting it. From cloud-workspace-group-list cmd return group id in json map item.
 
-* Get workspace id
+Response:
+- workspace id [<str>]
 
-* [Please review the next steps](#5-check-workspace-status)
 
-#### Case2: Build parameter when you don't have anything.
+#### 2. create image
 
-##### 1. image
-
-###### 1.1 create image
-
-```
-$ python main.py cloud-image-create --name=<str> \
+```shell
+$ python3 main.py cloud-image-create --name=<str> \
     --name=<str>
     --wget-url=<str>
     --note=<str>
     --start=<str>
     --ports=<str>
     --docker-image-id=<str>
- 
-return: image id [312243674765329408]
 ```
+Response:
+- image id [<str>]
 
 Parameter:
 
@@ -162,16 +181,17 @@ Parameter:
 - ports: required. Docker run ports param.
 - docker-image-id: Docker image id from `$ docker images` info.
 
-Return:
-
+Response:
 - image id: used in cloud-workspace-create
 
-###### 1.2 image list of creating history (ignorable)
+#### 3. image list 
+```shell
+$ python3 main.py cloud-image-list
+ ```
 
-```
-$ python main.py cloud-image-list
- 
-return: 
+
+Response:
+```shell
 [
     {
         "id": "312243674765329408",
@@ -190,41 +210,35 @@ return:
     ...
 ]
 ```
-
-Return:
-
+Parameter:
 - id: imageid used cloud-workspace-create.
 - image_name: image name
 - docker_image_id: docker image id from `$ docker images` info.
 - start_cmd: docker run cmd.
 - port_mapping: docker run --ports param.
 
-* Get image id for `cloud-workspace-create --image-id` parameter
+* <span style="color:green;"> **_Get image id for `cloud-workspace-create --image-id` parameter_** </span>
 
-##### 2. group
 
-###### 2.1 create group
+#### 4. create group
 
-```
+```shell
 $ python main.py cloud-workspace-group-create --name=<str>
-    
-return: workspace group id [312243674765329408]
 ```
+
+Response:
+- workspace group id [<str>]
 
 Parameter:
-
 - name: required, unique. The name of the created.
 
-Return:
+#### 5. group list
 
-- group id: used cloud-workspace-create
-
-###### 2.2 group list of creating history (ignorable)
-
+```shell
+$ python3 main.py cloud-workspace-group-list
 ```
-$ python main.py cloud-workspace-group-list
-
-return:
+Response:
+```shell
 [
     {
         "id": "362502199797875713",
@@ -236,22 +250,20 @@ return:
     }
 ]
 ```
-
-Return:
-
+Parameter:
 - id: group id used cloud-workspace-create
 - workspace_group_name: unique, group name
 
-* Get group id for `cloud-workspace-create --group-id` parameter
+* <span style="color:green;"> **_Get group id for `cloud-workspace-create --group-id` parameter_** </span>
 
-##### 3. product
 
-###### 3.1 product list
+#### 6. product list
 
+```shell
+$ python3 main.py cloud-product-list
 ```
-$ python main.py cloud-product-list
-
-return:
+Response:
+```shell
 [
     {
         "id": 10,
@@ -273,103 +285,115 @@ return:
     }
 ]
 ```
-
-Return: Available gpu specs info.
-
-- id: product id for `cloud-workspace-create --product-id` parameter.
+Parameter:
+- id: <span style="color:green;"> **_product id for `cloud-workspace-create --product-id` parameter_**</span>
 - gpu_name: gpu name
 - operating_system: os
 - hour_price: price per hour
 - week_price: price per week
 - month_price: price per month
 
-##### 4. Create workspace
+#### 7. check workSpace status
 
-- [Case 1](#case1-create-workspace-for-image-when-you-have-the-required-parameter)
-
-##### 5. Check workspace status
-
+```shell
+$ python3 main.py cloud-workspace-dispense-status
 ```
-$ python main.py cloud-workspace-dispense-status --id=<str>
-
-return: workspace: id: [<str>], name: [<str>] dispense success
+Response:
+```shell
+[
+    {
+        "id": 10,
+        "product_name": "PGPU-3090-24G-nCN",
+        "gpu_name": "NVIDIA GeForce RTX 3090",
+        "gpu_type": "NVIDIA GeForce RTX",
+        "gpu_model": "3090",
+        "video_memory": 24,
+        "core_num": 16,
+        "memory": 64,
+        "storage": 1000,
+        "net_band": 50,
+        "operating_system": "Ubuntu20.04LTS x64",
+        "hour_price": 0.28,
+        "month_price": 157,
+        "week_price": 280,
+        "area": "!CN",
+        "description": "3090 out of China"
+    }
+]
 ```
+Parameter:
+- id: <span style="color:green;"> **_product id for `cloud-workspace-create --product-id` parameter_**</span>
+- gpu_name: gpu name
+- operating_system: os
+- hour_price: price per hour
+- week_price: price per week
+- month_price: price per month
 
-##### 6. Scheduling URL
 
-- Wait workspace dispense success
-
+### **_Operation Steps_**
+1. **Step One**: Create a workspace.
+```shell
+$ python3 main.py cloud-workspace-create --name=<workspace name for yourself> \
+    --image-id=< one of cloud-image-list return > \
+    --product-id=< one of cloud-product-list > \
+    --unit=< one of "hr" or "week" or "month" > \
+    --duration=< int > \
+    --node-num=< int > \
+    --is-group=< true or false >
+    --group-id=< one of cloud-workspace-group-list return >
 ```
+ - <span style="color:red;"> **_When you don't know the image-id parameter, you can use the cloud-image-list command to obtain it or use the cloud-image-create command to create a new image_**. </span>
+ - <span style="color:red;"> **_When you don't know the product-id parameter, you can use the cloud-product-list command to obtain it_**. </span>
+ - <span style="color:red;"> **_When you don't know the group-id parameter, you can use the cloud-workspace-group-list command to obtain it or use the cloud-workspace-group-create command to create a new group_**. </span>
 
-POST https://<host>:<port>/router
 
-header {
-  WorkspaceId: ""
-}
-
-body: Depends on how your image api is defined
-
+2. **Step Two**: Check the distribution status of your workspace.
+```shell
+$ python3 main.py cloud-workspace-dispense-status --id=<str>
 ```
+Parameter:
+- id: The workspace ID obtained through the cloud-workspace-create command
 
-### Call AI example cmd introduction
 
-We provide an AI program that speaks through pictures. You can experience gen-instance through the following steps.
+## Caller part
 
-##### 1. create task
+### Command Line Example and Explanation
 
+#### 1. **create p2s_medium**
+
+```shell
+$ python3 main.py p2s_medium --image_url=<str> --text=<str> --pronouncer=<str> --btc_address=<str> --logo_url=<str>
 ```
-$ python main.py p2s_medium \
-    --image_url=<str> \
-    --text=<str> \
-    --pronouncer=<str> \
-    --c=<str> \
-    --btc_address=<str> \
-    --logo_url=<str>
-
-return: task id<str>
-```
+Command Explanation:
+- Generate a video using photos.
 
 Parameter:
+- --image_url: URL Address of the Image
+- --text: Spoken Content in the Video
+- --pronouncer：Speaker used in the video
+- --btc_address：BTC address (used to check for AINN and other BRC20 assets)
+- --logo_url：Logo cloud address used in the video
 
-- image_url: required, image cloud address used for making the video
-- text: required, image cloud address used for making the video
-- pronouncer: required, speaker used in the video
-- c: required, background used in the video
-- btc_address: required, BTC address (used to check for AINN and other BRC20 assets
-- logo_url: BTC address (used to check for AINN and other BRC20 assets
+#### 2. **task_query**
 
-Return:
-
-- task id: used get task status
-
-##### 2. get task status
-
+```shell
+$ python3 main.py task_query  --taskID=<str>
 ```
-$ python main.py task_query  --taskID=<str>
-
-return: 
-{
-    "result_url": "https://obai.aimc.digital/20240129173256434660.mp4",
-    "result_code": 100,
-    "msg": "task(20240129_09_31_43_996886) has succeeded.",
-    "api_time_consume": 0,
-    "api_time_left": 0,
-    "video_w": 0,
-    "video_h": 0,
-    "gpu_type": "",
-    "gpu_time_estimate": 0,
-    "gpu_time_use": 0
-}
-```
+Command Explanation:
+- Get detailed information about the task based on its task ID.
 
 Parameter:
+- --taskID: Task ID
 
-- taskID: from [create task](#1-create-task))
+### **_Operation Steps_**
+1. **Step One**: Generate a video from photos using an AI interface.
+```shell
+$ python3 main.py p2s_medium --image_url https://obai.aimc.digital/20240328170028340811.jpg --text Hello\ everyone,\ I\ am\ AI-generated\ Musk --pronouncer en-US-GuyNeural --backGroundName https://obai.aimc.digital/background/AINN_BG.png --btc_address bc1pp8vyhh2ma0ntzjwr26xxrn5r0w296yu68wdwle5rrhgtv3a2lgkqtyayus
+```
+<span style="color:red;">Return the task ID and the URL address of the generated video </span>
 
-Return:
-
-- result_url: video url after success
-- result_code: 100-success, 101-wait, 102-doing, 104-invalid, 105-timeout
-
-## QA
+2. **Step Two**: Query the detailed information of the task after execution
+```shell
+$ python3 main.py task_query --taskID 20240329_09_37_16_458230 
+```
 
