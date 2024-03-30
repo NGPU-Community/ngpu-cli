@@ -3,19 +3,6 @@ NGPU-Cli
 python cmd for ngpu main api calls.
 -----------
 
-## Features
-
-```shell
-1. calculation node: 
-.New address (node_new_account), 
-.Bind node address with wallet address (node_register_node)
-.After this, please install ngpu client with node address from node_new_account by install script from https://github.com/AINNGPU-Community/ngpu-installation, To uninstall node, please run uninstall script. 
-.Query all the nodes in network, including inactive and active ones (node_query_all_nodes)
-.Query node info by node address (node_query_node)
-.Query node incentive info by node address. when node address has been registered to one wallet, no incentive left at node address, so return 0. In that case, use wallet address to get all the incentives from all registered nodes.(node_query_node_incentive)
-
-```
-
 ## Notes
 
 * [**Node part**](#Node-part): If you want to provide GPU for NGPU, read this note
@@ -385,4 +372,3 @@ $ python3 main.py p2s_medium --image_url https://obai.aimc.digital/2024032817002
 ```shell
 $ python3 main.py task_query --taskID 20240329_09_37_16_458230 
 ```
-
