@@ -4,7 +4,14 @@ python cmd for ngpu main api calls.
 -----------
 
 ## Notes
+NGPU, as a decentralized GPU computing platform, mainly functions include:
+- Computing power providers can register, install, uninstall nodes, inquire about node information and incentives.
+- Computing consumer can inquire about the product list provided by the platform, upload their own images to generate Gen-Instances, create workspaces based on their own and platform images, dispatch them, check the issuance status, and prepare for subsequent AI service requests.
+- AI applications can request AI service APIs provided by Gen-Instances and check their status, returning results. 
 
+![workflow.png](./workflow.png)
+
+The followings are 3 parts correponding to the above functions.
 * [**Node part**](#Node-part): If you want to provide GPU for NGPU, read this note
 * [**Cloud part**](#Cloud-part): If you want to use the GPU computing power in NGPU, read this note
 * [**Caller part**](#Caller-part): If you want to call AI on NGPU, read this note
