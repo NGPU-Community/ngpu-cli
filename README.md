@@ -115,6 +115,8 @@ $ python main.py cloud-workspace-create --name=<workspace name for yourself> \
     --node-num=<int> \
     --is-group=<true or false>
     --group-id=<one of cloud-workspace-group-list return>
+    
+return: workspace id [<str>]
 ```
 
 Parameter:
@@ -130,6 +132,8 @@ Parameter:
 - group-id: if is-group is `true`, setting it. From cloud-workspace-group-list cmd return group id in json map item.
 
 * Get workspace id
+
+* [Please review the next steps](#5-check-workspace-status)
 
 #### Case2: Build parameter when you don't have anything.
 
@@ -160,8 +164,6 @@ Parameter:
 
 Return:
 - image id: used in cloud-workspace-create
-
-* [Please review the next steps](#5-check-workspace-status)
 
 ###### 1.2 image list of creating history (ignorable)
 
