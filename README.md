@@ -18,7 +18,6 @@ python cmd for ngpu main api calls.
 
 ## Notes
 
-* [General Commands](#General-Commands)If you're looking for general script commands, read this note.
 * [**Node part**](#Node-part): If you want to provide GPU for NGPU, read this note
 * [**Cloud part**](#Cloud-part): If you want to use the GPU computing power in NGPU, read this note
 * [**Caller part**](#Caller-part): If you want to call AI on NGPU, read this note
@@ -29,16 +28,6 @@ python cmd for ngpu main api calls.
 Python environment is 3.12, so run python -V, return 3.12
 To install packages, please pip install -r requirements.txt 
 ```
-
-### General Commands
-
-```shell
-$ python3 main.py version
-```
-cmd Name | Command Explanation
-----|:----:|
-version|Get the current script version information.
-
 
 ## **Node part**: 
 
@@ -223,7 +212,7 @@ Parameter:
 #### 4. create group
 
 ```shell
-$ python main.py cloud-workspace-group-create --name=<str>
+$ python3 main.py cloud-workspace-group-create --name=<str>
 ```
 
 Response:
