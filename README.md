@@ -21,7 +21,7 @@ python cmd for ngpu main api calls.
 * [Running module](#Running)
     * [Node cmd part](#Node-cmd-introduction): If you want to provide GPU for NGPU, read this note
     * [Cloud cmd part](#Cloud-cmd-introduction): If you want to use the GPU computing power in NGPU, read this note
-    * [Caller cmd part](): If you want to call AI on NGPU, read this note
+    * [Caller cmd part](#call-ai-example-cmd-introduction): If you want to call AI on NGPU, read this note
 
 ## Installing
 
@@ -313,10 +313,63 @@ body: Depends on how your image api is defined
 
 ### Call AI example cmd introduction
 
+We provide an AI program that speaks through pictures. You can experience gen-instance through the following steps.
+
+##### 1. create task
+
+```
+$ python main.py p2s_medium \
+    --image_url=<str> \
+    --text=<str> \
+    --pronouncer=<str> \
+    --c=<str> \
+    --btc_address=<str> \
+    --logo_url=<str>
+
+return: task id<str>
 ```
 
+Parameter:
+
+- image_url: required, image cloud address used for making the video
+- text: required, image cloud address used for making the video
+- pronouncer: required, speaker used in the video
+- c: required, background used in the video
+- btc_address: required, BTC address (used to check for AINN and other BRC20 assets
+- logo_url: BTC address (used to check for AINN and other BRC20 assets
+
+Return:
+
+- task id: used get task status
+
+##### 2. get task status
 
 ```
+$ python main.py task_query  --taskID=<str>
+
+return: 
+{
+    "result_url": "https://obai.aimc.digital/20240129173256434660.mp4",
+    "result_code": 100,
+    "msg": "task(20240129_09_31_43_996886) has succeeded.",
+    "api_time_consume": 0,
+    "api_time_left": 0,
+    "video_w": 0,
+    "video_h": 0,
+    "gpu_type": "",
+    "gpu_time_estimate": 0,
+    "gpu_time_use": 0
+}
+```
+
+Parameter:
+
+- taskID: from [create task](#1-create-task))
+
+Return:
+
+- result_url: video url after success
+- result_code: 100-success, 101-wait, 102-doing, 104-invalid, 105-timeout
 
 ## QA
 
