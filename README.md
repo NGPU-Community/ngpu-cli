@@ -70,7 +70,7 @@ return:
 
 Return:
 
-- address: The node address you applied for is used as the registered node
+- keystore.address: The node address you applied for is used as the registered node
 
 ##### 2. register node
 
@@ -191,6 +191,14 @@ return:
 ]
 ```
 
+Return:
+
+- id: imageid used cloud-workspace-create.
+- image_name: image name
+- docker_image_id: docker image id from `$ docker images` info.
+- start_cmd: docker run cmd.
+- port_mapping: docker run --ports param.
+
 * Get image id for `cloud-workspace-create --image-id` parameter
 
 ##### 2. group
@@ -202,6 +210,14 @@ $ python main.py cloud-workspace-group-create --name=<str>
     
 return: workspace group id [312243674765329408]
 ```
+
+Parameter:
+
+- name: required, unique. The name of the created.
+
+Return:
+
+- group id: used cloud-workspace-create
 
 ###### 2.2 group list of creating history (ignorable)
 
@@ -220,6 +236,11 @@ return:
     }
 ]
 ```
+
+Return:
+
+- id: group id used cloud-workspace-create
+- workspace_group_name: unique, group name
 
 * Get group id for `cloud-workspace-create --group-id` parameter
 
@@ -253,8 +274,14 @@ return:
 ]
 ```
 
-* return: Available gpu specs info.
-* Get product id for `cloud-workspace-create --product-id` parameter
+Return: Available gpu specs info.
+
+- id: product id for `cloud-workspace-create --product-id` parameter.
+- gpu_name: gpu name
+- operating_system: os
+- hour_price: price per hour
+- week_price: price per week
+- month_price: price per month
 
 ##### 4. Create workspace
 
