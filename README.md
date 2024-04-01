@@ -317,8 +317,8 @@ Parameter:
 1. **Step One**: Create a workspace.
 ```shell
 $ python3 main.py cloud-workspace-create --name=<workspace name for yourself> \
-    --image-id=< one of cloud-image-list return > \
-    --product-id=< one of cloud-product-list > \
+    --image-id=28 \
+    --product-id=10 \
     --unit=< one of "hr" or "week" or "month" > \
     --duration=< int > \
     --node-num=< int > \
