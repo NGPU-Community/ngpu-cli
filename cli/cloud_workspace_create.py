@@ -17,10 +17,13 @@ def cloud_workspace_create(args):
 
     node_num = args.node_num
 
-    is_group = args.is_group
+    is_group = False
     workspace_group_id = args.group_id
-    if node_num > 1 and not is_group:
-        raise SystemExit('cloud-workspace-create failed: node_num > 1, is_group must be True')
+    if workspace_group_id:
+        is_group = True
+
+    if node_num > 1 and not workspace_group_id:
+        raise SystemExit('cloud-workspace-create failed: --node-num > 1, --group-id is not null')
 
     area = '*'
     public_network = 1

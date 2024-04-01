@@ -30,9 +30,9 @@ def cloud_workspace_dispense_status(args):
     response = requests.get(url, headers=headers, data=data)
     logging.info(response.text)
     if response.status_code == 200:
-        status = response.json()['result']['docker_status']
-        id = response.json()['result']['id']
-        name = response.json()['result']['workspace_name']
+        status = response.json()['result'][0]['docker_state']
+        id = response.json()['result'][0]['id']
+        name = response.json()['result'][0]['workspace_name']
 
         print(f"workspace: id: [{id}], name: [{name}] dispense success") if status == 4 else print(
             f"workspace: id: [{id}], name: [{name}] dispense doing")

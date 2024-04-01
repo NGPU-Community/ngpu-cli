@@ -39,7 +39,6 @@ def cloud_workspace_create_cmd(subparsers: any) -> None:
     sub_parser.add_argument('--unit', type=str, help='need duration unit: hr, week, month', default="month")
     sub_parser.add_argument('--duration', type=int, help='need duration', default=1)
     sub_parser.add_argument('--node-num', type=int, help='need node num, if > 1, need do group', default=1)
-    sub_parser.add_argument('--is-group', type=bool, help='if group, need group id param', default=False)
     sub_parser.add_argument('--group-id', type=str, help='cloud-workspace-group-list return group id')
 
     sub_parser.set_defaults(func=cloud_workspace_create.cloud_workspace_create)
@@ -157,6 +156,7 @@ if __name__ == '__main__':
     cloud_workspace_group_create_cmd(subparsers=subparsers)
     cloud_workspace_group_list_cmd(subparsers=subparsers)
     cloud_product_list_cmd(subparsers=subparsers)
+    cloud_workspace_dispense_status_cmd(subparsers=subparsers)
 
     # node -> cli
     node_new_account(subparsers=subparsers)

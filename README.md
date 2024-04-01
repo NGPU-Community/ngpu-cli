@@ -120,8 +120,7 @@ $ python3 main.py cloud-workspace-create --name=< workspace name for yourself > 
     --unit=< one of "hr" or "week" or "month" > \
     --duration=< int > \
     --node-num=< int > \
-    --is-group=< true or false >
-    --group-id=< one of cloud-workspace-group-list return >
+    --group-id=< not required ,one of cloud-workspace-group-list return >
 ```
 Command Explanation:
 - Create a workspace
@@ -134,8 +133,7 @@ Parameter:
 - unit: required. Duration unit include `hr`(pre hour), `week`(pre week), `month`(pre month).
 - duration: required. You want to use GPU time.
 - node-num: required. You want to use node num.
-- is-group: default `false`, if node-num > 1, it is `true`.
-- group-id: if is-group is `true`, setting it. From cloud-workspace-group-list cmd return group id in json map item.
+- group-id: if node-num > 1, setting it. From cloud-workspace-group-list cmd return group id in json map item.
 
 Response:
 - workspace id [<str>]
@@ -319,11 +317,9 @@ Parameter:
 $ python3 main.py cloud-workspace-create --name=<workspace name for yourself> \
     --image-id=28 \
     --product-id=10 \
-    --unit=< one of "hr" or "week" or "month" > \
-    --duration=< int > \
-    --node-num=< int > \
-    --is-group=< true or false >
-    --group-id=< one of cloud-workspace-group-list return >
+    --unit="week" \
+    --duration=1 \
+    --node-num=1
 ```
  - <span style="color:red;"> **_When you don't know the image-id parameter, you can use the cloud-image-list command to obtain it or use the cloud-image-create command to create a new image_**. </span>
  - <span style="color:red;"> **_When you don't know the product-id parameter, you can use the cloud-product-list command to obtain it_**. </span>
