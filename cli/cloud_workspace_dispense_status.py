@@ -34,7 +34,8 @@ def cloud_workspace_dispense_status(args):
         id = response.json()['result'][0]['id']
         name = response.json()['result'][0]['workspace_name']
 
-        print(f"workspace: id: [{id}], name: [{name}] dispense success") if status == 4 else print(
+        print(
+            f"workspace: id: [{id}], name: [{name}] dispense success: [ POST -H 'Authorization:<workspace id>' https://obai.aimc.digital:8091/user/schedulingTask ]") if status == 4 else print(
             f"workspace: id: [{id}], name: [{name}] dispense doing")
     else:
         logging.error('cloud workspace list failed: {}'.format(response.text))
