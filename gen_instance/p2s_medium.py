@@ -18,7 +18,7 @@ from .include import GEN_INSTANCE_HOST
 def sendTask(image_url, text, pronouncer, backGroundName, btc_address, logo_url):
     funName = "sendTask"
     logging.info('Function {} image_url={} text={} pronouncer={} backGroundName={} btc_address={} logo_url={}.'.format(funName, image_url, text, pronouncer, backGroundName, btc_address, logo_url))
-    url = "{}/twinSync/sadTalker".format(GEN_INSTANCE_HOST)
+    url = "{}/sadTalker".format(GEN_INSTANCE_HOST)
     #set https header
     headers = {
         'Content-Type': 'application/json',
@@ -56,7 +56,7 @@ def sendTask(image_url, text, pronouncer, backGroundName, btc_address, logo_url)
 def checkTask(taskID):
     funName = "checkTask"
     logging.info('Function {} taskID={}.'.format(funName, taskID))
-    url = "{}/twinSync/sadTalker?taskID={}".format(GEN_INSTANCE_HOST, taskID)
+    url = "{}/sadTalker?taskID={}".format(GEN_INSTANCE_HOST, taskID)
     #set https header
     headers = {
         'Content-Type': 'application/json',
