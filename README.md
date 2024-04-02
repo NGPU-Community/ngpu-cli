@@ -373,5 +373,53 @@ $ python3 main.py p2s_medium --image_url https://obai.aimc.digital/2024032817002
 
 2. **Step Two**: Query the detailed information of the task after execution
 ```shell
-$ python3 main.py task_query --taskID 20240329_09_37_16_458230 
+$ python3 main.py task_query --taskID 20240402_06_47_00_789580 
 ```
+
+Response:
+```shell
+{
+    "result_code": 200,
+    "msg": "success",
+    "task": {
+        "userkey": "btc-fc9a1161-9d9d-41b4-833f-e2b7622de9d4",
+        "btcaddress": "bc1pp8vyhh2ma0ntzjwr26xxrn5r0w296yu68wdwle5rrhgtv3a2lgkqtyayus",
+        "workspaceid": "335263022995997696",
+        "taskid": "20240402_06_47_00_789580",
+        "requrl": "/user/sadTalker",
+        "method": "sadTalker",
+        "userip": "58.34.91.211",
+        "nodeip": "112.17.252.164",
+        "nodeaddr": "0x732637A3A3E0D335Dc00d9F8fba8a1033831Bf13",
+        "requesttime": "2024-04-02 14:47:01",
+        "responsetime": "2024-04-02 14:48:06",
+        "request": "{\"audio_url\":\"https://obai.aimc.digital/20240402144655978890.mp3\",\"video_url\":\"https://obai.aimc.digital/20240402144655975261.jpg\",\"text\":\"Hello everyone, I am AI-generated Musk\",\"pronouncer\":\"en-US-GuyNeural\",\"backGroundName\":\"AINN_BG\",\"btc_address\":\"bc1pp8vyhh2ma0ntzjwr26xxrn5r0w296yu68wdwle5rrhgtv3a2lgkqtyayus\",\"logo_url\":\"\"}",
+        "state": 3,
+        "response": "{\"result_url\":\"http://112.17.252.164:8076/4262d58a-06e1-4575-8e10-bd30d0abf60f/2024040214465597526120240402144655978890_full.mp4\",\"result_code\":100,\"msg\":\"task(20240402_06_47_00_789580) has succeeded.\",\"api_time_consume\":3.78,\"api_time_left\":0,\"video_w\":906,\"video_h\":1196,\"gpu_type\":\"\",\"gpu_time_estimate\":0,\"gpu_time_use\":0}",
+        "recordDursion": 65,
+        "videodursion": 3,
+        "gpudursion": 0,
+        "watermarktime": "2024-04-02 14:48:43",
+        "watermarkres": "{\"result_url\":\"https://obai.aimc.digital/20240402144840988057.mp4\",\"result_code\":100,\"msg\":\"task(20240402_06_47_00_789580) has succeeded.\",\"api_time_consume\":3.78,\"api_time_Left\":0,\"video_w\":906,\"video_h\":1196,\"gpu_type\":\"\",\"gpu_time_estimate\":0,\"gpu_time_use\":0,\"first_image\":\"https://obai.aimc.digital/20240402144842770421.png\"}",
+        "servername": "Brc20_ApiServer"
+    }
+}
+```
+
+Parameter:
+- --btcaddress: BTC address (used to check for AINN and other BRC20 assets)
+- --workspaceid: Spoken Content in the Video
+- --taskid： Task ID
+- --requrl：Request Path
+- --method：Request Method
+- --userip：User's Request IP
+- --nodeip：Node IP Handling the Task
+- --nodeaddr：Node Address Handling the Task
+- --requesttime：Request Time
+- --responsetime：Response Time
+- --request：Request Content
+- --state：Current Task Status
+- --response：Response Content
+- --recordDursion：GPU Consumption Time (Seconds)
+
+
