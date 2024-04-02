@@ -14,11 +14,13 @@ from .include import GEN_INSTANCE_HOST
 def queryTask(taskID):
     funName = "queryTask"
     logging.info('Function {} taskID={}.'.format(funName, taskID))
-    url = "{}/manager/getTask?taskID={}".format(GEN_INSTANCE_HOST, taskID)
+    url = "{}/user/getTask?taskID={}".format(GEN_INSTANCE_HOST, taskID)
     #set https header
     headers = {
         'Content-Type': 'application/json',
     }
+    logging.info('{} Query Task information url={}'.format(funName, url))
+
     #initiate an https request
     try:
         response = requests.get(url, headers=headers)

@@ -14,7 +14,7 @@ from .include import GEN_INSTANCE_HOST
 def queryTasks(btcaddress):
     funName = "queryTasks"
     logging.info('Function {} btcaddress={}.'.format(funName, btcaddress))
-    url = "{}/manager/getTasks?btcaddress={}".format(GEN_INSTANCE_HOST, btcaddress)
+    url = "{}/user/getTasks?btcaddress={}".format(GEN_INSTANCE_HOST, btcaddress)
     #set https header
     headers = {
         'Content-Type': 'application/json',
