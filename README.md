@@ -46,7 +46,7 @@ Parameter:
 - --passWD: Create a generated keystore password
 - --fileName: Create a generated keystore file name
 - --keystore: Create the content of the generated keystore file
-
+Please pay attention: <font color="red">the new node address is keystore.address. In above case, it is f942f1adc3bfc57cf075476236eee476199e853a.</font>
 #### 2. **register-node**
 ```shell
 $ python3 main.py register-node --node-addr < Computational Power Node Address > --organization < Organization Name > --wallet-account < Wallet Address >
@@ -69,7 +69,7 @@ Command Explanation:
 
 #### 4. **query-node**
 ```shell
-$ python3 main.py query-node --node-addr 0x732637A3A3E0D335Dc00d9F8fba8a1033831Bf13 
+$ python3 main.py query-node --node-addr f942f1adc3bfc57cf075476236eee476199e853a 
 ```
 Command Explanation:
 - Retrieve detailed information of a computational power node based on its address
@@ -79,7 +79,7 @@ Parameter:
 
 #### 5. **query-node-incentive**
 ```shell
-$ python3 main.py query-node-incentive --node-addr 0x732637A3A3E0D335Dc00d9F8fba8a1033831Bf13 
+$ python3 main.py query-node-incentive --node-addr f942f1adc3bfc57cf075476236eee476199e853a 
 ```
 Command Explanation:
 - Query all current computational power nodes
@@ -93,19 +93,35 @@ Parameter:
 ```shell
 $ python3 main.py new-account
 ```
-<span style="color:red;"> Assuming the returned address is: 0x732637A3A3E0D335Dc00d9F8fba8a1033831Bf13 </span>
+Assuming the returned address is: f942f1adc3bfc57cf075476236eee476199e853a 
 
 2. **Step Two**: Register the computational power node address with the AINNGPU platform.
 ```shell
-$ python3 main.py query-node --node-addr 0x732637A3A3E0D335Dc00d9F8fba8a1033831Bf13 
+$ python3 main.py query-node --node-addr f942f1adc3bfc57cf075476236eee476199e853a 
 ```
-3. **Step Three**: Run the computational power node installation script
-- [node client install](https://github.com/AINNGPU-Community/ngpu-install-script)
-- You may need to wait for the network to measure your PC after installation
+3. **Step Three**: <font color="red">Run the following installation script ONLY on a computing node, other than test client. To install nvidia driver, install script shall run with root priviledge. </font>
+```shell
+git clone https://github.com/AINNGPU-Community/ngpu-install-script.git ;  cd ngpu-install-script; chmod +x -R *.sh; sudo ./install_mcNode.sh \
+   --nodeAddr <node address from step 1, new-account>  
+   --nodeName <node name, please use any string as you like> \
+   --ipAddr <ip address from ifconfig or ip -4 a, for multi-network cards, please use the NIC via which computer access internet>
+   --home <root path for ngpu client, where all ngpu files live> \
+   --storage <committed storage, in GB. Client checks the storage during measurement and if free volumn of $home is less than this, all the volumn will be used. >   
+
+One example is : 
+git clone https://github.com/AINNGPU-Community/ngpu-install-script.git ;  cd ngpu-install-script; chmod +x -R *.sh; sudo ./install_mcNode.sh \
+   --nodeAddr   f942f1adc3bfc57cf075476236eee476199e853a \
+   --nodeName myNode1 \
+   --ipAddr 192.168.1.100 \
+   --home /home/ngpu-client \
+   --storage 1000   
+```
+- More details, like node requirements, are at [node client install](https://github.com/AINNGPU-Community/ngpu-install-script).
+- You may need to wait for the network to measure your PC after installation, esp. the storage is more than 1000 GB.
 
 4. **Step Four**: Query the incentive amount received by the computational power node
 ```shell
-$ python3 main.py query-node-incentive --node-addr 0x732637A3A3E0D335Dc00d9F8fba8a1033831Bf13
+$ python3 main.py query-node-incentive --node-addr f942f1adc3bfc57cf075476236eee476199e853a
 ```
 
 ## Cloud part
