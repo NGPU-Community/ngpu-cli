@@ -102,22 +102,22 @@ $ python3 main.py query-node --node-addr f942f1adc3bfc57cf075476236eee476199e853
 3. **Step Three**: <font color="red">Run the following installation script ONLY on a computing node, other than test client. To install nvidia driver, install script shall run with root priviledge. </font>
 ```shell
 git clone https://github.com/AINNGPU-Community/ngpu-install-script.git ;  cd ngpu-install-script; chmod +x -R *.sh; sudo ./install_mcNode.sh \
-   --nodeAddr <node address from step 1, new-account>  
-   --nodeName <node name, please use any string as you like> \
-   --ipAddr <ip address from ifconfig or ip -4 a, for multi-network cards, please use the NIC via which computer access internet>
-   --home <root path for ngpu client, where all ngpu files live> \
-   --storage <committed storage, in GB. Client checks the storage during measurement and if free volumn of $home is less than this, all the volumn will be used. >   
-
-One example is : 
-git clone https://github.com/AINNGPU-Community/ngpu-install-script.git ;  cd ngpu-install-script; chmod +x -R *.sh; sudo ./install_mcNode.sh \
    --nodeAddr   f942f1adc3bfc57cf075476236eee476199e853a \
    --nodeName myNode1 \
    --ipAddr 192.168.1.100 \
    --home /home/ngpu-client \
    --storage 1000   
 ```
-- More details, like node requirements, are at [node client install](https://github.com/AINNGPU-Community/ngpu-install-script).
-- You may need to wait for the network to measure your PC after installation, esp. the storage is more than 1000 GB.
+Parameter:
+- nodeAddr: node address from step 1, new-account（As long as it's an ETH address, it's fine. It doesn't have to be the address returned by the new-account interface.）
+- nodeName: node name, please use any string as you like.
+- ipAddr: ip address from ifconfig or ip -4 a, for multi-network cards, please use the NIC via which computer access internet.
+- home: root path for ngpu client, where all ngpu files live.
+- storage: committed storage, in GB. Client checks the storage during measurement and if free volumn of $home is less than this, all the volumn will be used.
+
+#### **More details, like node requirements, are at [node client install](https://github.com/AINNGPU-Community/ngpu-install-script)**.
+#### **You may need to wait for the network to measure your PC after installation, esp. the storage is more than 1000 GB**.
+
 
 4. **Step Four**: Query the incentive amount received by the computational power node
 ```shell
