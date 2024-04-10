@@ -448,9 +448,19 @@ Parameter:
 1. chmod +x ngpuLog.sh
 2. ./ngpuLog.sh
 ```
-
+![f4168b4f221330023e3b05e576962588.png](./log/f4168b4f221330023e3b05e576962588.png)
 **Step Three**：View the generated log file (ngpu.log).
 ```shell
 tail -f ngpu.log
 ```
+log format is like {time}  {LogLevel} - {source IP} {Http method} {Http Uri} {log content}. LogLevel is fixed to INFO. Http method is POST, and Uri is /ngpuLog/log. 
 
+Now, there are 4 kinds of logs
+1. Node client ipvRunner, which is from /ngpu-node-client repository. The log is in plain text, and the format is {time} {thread id} {log level} {source file name and line number} {log info}. The following figure is one example.
+![589781f06fd0a695a8cd334930021884.png](./log/589781f06fd0a695a8cd334930021884.png)
+2. backend applications, 121.196.222.24 and 121.40.165.67, whose logs show how to create image and workspace, dispatch and list. 
+The following figure contains dispatch info and workspace info.
+![61f6f118f6448f08c3422105d2798bf3.png](./log/61f6f118f6448f08c3422105d2798bf3.png)
+3. api-server, whose logs show the workflow for every ai action.
+The following figure contains main steps of sadtalking which makes one video from photos and texts. 
+![024f73c817d2362e68dd6a1ca419a344.png](./log/024f73c817d2362e68dd6a1ca419a344.png)
