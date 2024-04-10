@@ -439,7 +439,18 @@ Parameter:
 - --recordDursion：GPU Consumption Time (Seconds)
 
 
-## How to view ngpu system log on linux computer? 
-1. Copy log/ngpuLog.sh to linux computer
-2. chmod +x ngpuLog.sh ; ./ngpuLog.sh. IMPORTANT: please keep this program running, without which, log file cannot be updated. 
-3. There should one log file, ngpu.log. Use  tail -f ngpu.log. 
+## View the NGPU log? 
+
+**Step One**：Copy log/ngpuLog.sh to a Linux computer (Ubuntu is recommended).
+
+**Step Two**：Execute the command to generate the log file.
+```shell
+1. chmod +x ngpuLog.sh
+2. ./ngpuLog.sh
+```
+
+**Step Three**：View the generated log file (ngpu.log).
+```shell
+tail -f ngpu.log
+```
+
