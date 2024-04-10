@@ -449,6 +449,7 @@ Parameter:
 2. ./ngpuLog.sh
 ```
 ![f4168b4f221330023e3b05e576962588.png](./log/f4168b4f221330023e3b05e576962588.png)
+
 **Step Three**：View the generated log file (ngpu.log).
 ```shell
 tail -f ngpu.log
@@ -461,6 +462,6 @@ Now, there are 4 kinds of logs
 2. backend applications, 121.196.222.24 and 121.40.165.67, whose logs show how to create image and workspace, dispatch and list. 
 The following figure contains dispatch info and workspace info.
 ![61f6f118f6448f08c3422105d2798bf3.png](./log/61f6f118f6448f08c3422105d2798bf3.png)
-3. api-server, whose logs show the workflow for every ai action.
+3. api-server, 3.27.208.68, whose logs show the workflow for every ai action.
 The following figure contains main steps of sadtalking which makes one video from photos and texts. 
 ![024f73c817d2362e68dd6a1ca419a344.png](./log/024f73c817d2362e68dd6a1ca419a344.png)
