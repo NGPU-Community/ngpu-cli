@@ -383,7 +383,7 @@ Parameter:
 ### **_Operation Steps_**
 1. **Step One**: Generate a video from photos using an AI interface.
 ```shell
-$ python3 main.py p2s_medium --image_url https://obai.aimc.digital/20240328170028340811.jpg --text Hello\ everyone,\ I\ am\ AI-generated\ Musk --pronouncer en-US-GuyNeural --backGroundName https://obai.aimc.digital/background/AINN_BG.png --btc_address bc1pp8vyhh2ma0ntzjwr26xxrn5r0w296yu68wdwle5rrhgtv3a2lgkqtyayus
+$ python3 main.py p2s_medium --image_url https://ainngpu.io/anvd/20240413151149713027.png --text Hello\ everyone,\ I\ am\ AI-generated\ Musk --pronouncer en-US-GuyNeural --backGroundName https://ainngpu.io/anvd/background/AINN_BG.png --btc_address bc1pp8vyhh2ma0ntzjwr26xxrn5r0w296yu68wdwle5rrhgtv3a2lgkqtyayus
 ```
 <span style="color:red;">Return the task ID and the URL address of the generated video </span>
 
