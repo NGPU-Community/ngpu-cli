@@ -10,5 +10,5 @@ logging.basicConfig(level=logging.INFO,
 #                     format='%(asctime)s %(filename)s[line:%(lineno)d] %(levelname)s %(message)s',
 #                     datefmt='%a, %d %b %Y %H:%M:%S')
 
-CLOUD_HOST = 'http://121.40.165.67:8070'
+CLOUD_HOST = 'https://api-mcc.ainngpu.io'
 # CLOUD_HOST = 'http://localhost:8070'
