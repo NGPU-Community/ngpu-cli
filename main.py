@@ -1,7 +1,8 @@
 import argparse
 
 from cli import version, cloud_image_create, cloud_image_list, cloud_workspace_list, cloud_product_list, \
-    cloud_workspace_create, cloud_workspace_group_create, cloud_workspace_group_list, cloud_workspace_dispense_status
+    cloud_workspace_create, cloud_workspace_group_create, cloud_workspace_group_list, cloud_workspace_dispense_status, \
+    demo
 
 from cli import node
 from gen_instance import p2s_medium, task_query, address_query
@@ -13,6 +14,11 @@ def version_cmd(subparsers: any) -> None:
     # parser_image_create.add_argument('integers', metavar='N', type=int, nargs='+',
     #                                  help='an integer for the accumulator')
     sub_parser.set_defaults(func=version.version)
+
+
+def demo_cmd(subparsers: any) -> None:
+    sub_parser = subparsers.add_parser('demo', help='create workspace and use it')
+    sub_parser.set_defaults(func=demo.demo)
 
 
 def cloud_image_create_cmd(subparsers: any) -> None:
@@ -147,6 +153,9 @@ if __name__ == '__main__':
 
     # version cli
     version_cmd(subparsers=subparsers)
+
+    # demo
+    demo_cmd(subparsers=subparsers)
 
     # cloud-* cli
     cloud_image_create_cmd(subparsers=subparsers)

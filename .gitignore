@@ -6,6 +6,8 @@ ngpuCli
 *.pyproj
 venv
 
+demo_file/demo_output.jpeg
+
 logs
 nohup.out
 images
