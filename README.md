@@ -23,6 +23,11 @@ Python environment is 3.12, so run python -V, return 3.12
 To install packages, please pip install -r requirements.txt 
 ```
 
+### Demo
+```
+$ python main.py demo
+```
+
 ## **Node part**: 
 
 ### Command Line Example and Explanation
