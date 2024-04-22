@@ -3,6 +3,27 @@ NGPU-Cli
 python cmd for ngpu main api calls.
 -----------
 
+# 1：Workspace Distribution and Usage
+
++ To facilitate the demonstration of deploying and using workspaces, we provide a complete example. By running the code below, you can deploy a specified workspace. Once the workspace is deployed, it automatically starts and uses the AI function within this workspace to generate an image.
+
+**note：as this feature is intended for demonstration purposes only, repeated use will deploy multiple different workspaces, which can lead to wastage of computing resources.**
+
+## Installation
+
+```shell
+Python environment is 3.12, so run python -V, return 3.12
+To install packages, please pip install -r requirements.txt 
+```
+
+### Demo
+```
+$ python main.py demo
+```
+
+
+# 2：Role Definition and Description
+
 ## Notes
 NGPU, as a decentralized GPU computing platform, mainly functions include:
 - Computing power providers can register, install, uninstall nodes, inquire about node information and incentives.
@@ -16,17 +37,7 @@ The followings are 3 parts correponding to the above functions.
 * [**Cloud part**](#Cloud-part): If you want to use the GPU computing power in NGPU, read this note
 * [**Caller part**](#Caller-part): If you want to call AI on NGPU, read this note
 
-## Installation
 
-```shell
-Python environment is 3.12, so run python -V, return 3.12
-To install packages, please pip install -r requirements.txt 
-```
-
-### Demo
-```
-$ python main.py demo
-```
 
 ## **Node part**: 
 
