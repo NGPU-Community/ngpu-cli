@@ -7,7 +7,7 @@ python cmd for ngpu main api calls.
 
 + To facilitate the demonstration of deploying and using workspaces, we provide a complete example. By running the code below, you can deploy a specified workspace. Once the workspace is deployed, it automatically starts and uses the AI function within this workspace to generate an image.
 
-**note：as this feature is intended for demonstration purposes only, repeated use will deploy multiple different workspaces, which can lead to wastage of computing resources.**
+**_note：as this feature is intended for demonstration purposes only, repeated use will deploy multiple different workspaces, which can lead to wastage of computing resources._**
 
 ## Installation
 
