@@ -95,7 +95,9 @@ def demo(args):
 
     # TODO create task
     url = "https://ainngpu.io/user/createImage"
+    btc_addr = 'bc1pp8vyhh2ma0ntzjwr26xxrn5r0w296yu68wdwle5rrhgtv3a2lgkqtyayus'
     headers1 = {
+        'BtcAddress': btc_addr,
         'Authorization': str(workspace_id),
         'Content-Type': 'application/json',
     }
@@ -172,7 +174,7 @@ def demo(args):
     json_object = json.loads(images)
 
     base64_to_image(json_object['images'][0], output)
-    print("ai task finish: []".format(output))
+    print("ai task finish: [{}]".format(output))
 
 
 def image_to_base64(filename):
