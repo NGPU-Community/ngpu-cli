@@ -64,10 +64,7 @@ def demo(args):
     # waiting workspace ready
     workspace_id = response.json()['result']['workspace_id']
     # workspace_id = 370450138809762816
-    url = "{}/ngpu/api/v1/cloud/workspace/list".format(CLOUD_HOST)
-    data = {
-        "id": workspace_id
-    }
+    url = f"{CLOUD_HOST}/ngpu/api/v1/cloud/workspace/list?id={workspace_id}"
 
     while True:
         print("waiting workspace ready, 60s after retry...")
@@ -95,6 +92,7 @@ def demo(args):
 
     # TODO create task
     url = "https://ainngpu.io/user/createImage"
+    # bc1pp8vyhh2ma0ntzjwr26xxrn5r0w296yu68wdwle5rrhgtv3a2lgkqtyayus
     btc_addr = 'bc1pp8vyhh2ma0ntzjwr26xxrn5r0w296yu68wdwle5rrhgtv3a2lgkqtyayus'
     headers1 = {
         'BtcAddress': btc_addr,
