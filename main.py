@@ -2,7 +2,7 @@ import argparse
 
 from cli import version, cloud_image_create, cloud_image_list, cloud_workspace_list, cloud_product_list, \
     cloud_workspace_create, cloud_workspace_group_create, cloud_workspace_group_list, cloud_workspace_dispense_status, \
-    demo
+    demo, demo_llm, cloud_workspace_delete
 
 from cli import node
 from gen_instance import p2s_medium, task_query, address_query
@@ -17,8 +17,13 @@ def version_cmd(subparsers: any) -> None:
 
 
 def demo_cmd(subparsers: any) -> None:
-    sub_parser = subparsers.add_parser('demo', help='create workspace and use it')
+    sub_parser = subparsers.add_parser('demo', help='demo')
     sub_parser.set_defaults(func=demo.demo)
+
+
+def demo_llm_cmd(subparsers: any) -> None:
+    sub_parser = subparsers.add_parser('demo-llm', help='demo llm')
+    sub_parser.set_defaults(func=demo_llm.demo_llm)
 
 
 def cloud_image_create_cmd(subparsers: any) -> None:
@@ -77,6 +82,12 @@ def cloud_workspace_group_list_cmd(subparsers: any) -> None:
 def cloud_product_list_cmd(subparsers: any) -> None:
     sub_parser = subparsers.add_parser('cloud-product-list', help='list product')
     sub_parser.set_defaults(func=cloud_product_list.cloud_product_list)
+
+
+def cloud_workspace_delete_cmd(subparsers: any) -> None:
+    sub_parser = subparsers.add_parser('cloud-workspace-delete', help='delete workspace')
+    sub_parser.add_argument('--id', type=str, help='workspace id', required=True)
+    sub_parser.set_defaults(func=cloud_workspace_delete.cloud_workspace_delete)
 
 
 #####for node actions by Edward
@@ -156,6 +167,8 @@ if __name__ == '__main__':
 
     # demo
     demo_cmd(subparsers=subparsers)
+    # demo-llm
+    demo_llm_cmd(subparsers=subparsers)
 
     # cloud-* cli
     cloud_image_create_cmd(subparsers=subparsers)
@@ -166,6 +179,7 @@ if __name__ == '__main__':
     cloud_workspace_group_list_cmd(subparsers=subparsers)
     cloud_product_list_cmd(subparsers=subparsers)
     cloud_workspace_dispense_status_cmd(subparsers=subparsers)
+    cloud_workspace_delete_cmd(subparsers=subparsers)
 
     # node -> cli
     node_new_account(subparsers=subparsers)
