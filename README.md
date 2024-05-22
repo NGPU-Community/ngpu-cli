@@ -68,7 +68,7 @@ Please pay attention: <font color="red">the new node address is keystore.address
 $ python3 main.py register-node --node-addr < Computational Power Node Address > --organization < Organization Name > --wallet-account < Wallet Address >
 ```
 Command Explanation:
-- Register a computational power node on AINNGPU
+- Register a computational power node on NGPU
 
 Parameter:
 - --node-addr: from new-account return
@@ -111,13 +111,13 @@ $ python3 main.py new-account
 ```
 Assuming the returned address is: f942f1adc3bfc57cf075476236eee476199e853a 
 
-2. **Step Two**: Register the computational power node address with the AINNGPU platform.
+2. **Step Two**: Register the computational power node address with the NGPU platform.
 ```shell
 $ python3 main.py query-node --node-addr f942f1adc3bfc57cf075476236eee476199e853a 
 ```
 3. **Step Three**: <font color="red">Run the following installation script ONLY on a computing node, other than test client. To install nvidia driver, install script shall run with root priviledge. </font>
 ```shell
-git clone https://github.com/AINNGPU-Community/ngpu-install-script.git ;  cd ngpu-install-script; chmod +x -R *.sh; sudo ./install_mcNode.sh \
+git clone https://github.com/NGPU-Community/ngpu-install-script.git ;  cd ngpu-install-script; chmod +x -R *.sh; sudo ./install_mcNode.sh \
    --nodeAddr   f942f1adc3bfc57cf075476236eee476199e853a \
    --nodeName myNode1 \
    --ipAddr 192.168.1.100 \
@@ -131,7 +131,7 @@ Parameter:
 - home: root path for ngpu client, where all ngpu files live.
 - storage: committed storage, in GB. Client checks the storage during measurement and if free volumn of $home is less than this, all the volumn will be used.
 
-#### **More details, like node requirements, are at [node client install](https://github.com/AINNGPU-Community/ngpu-install-script)**.
+#### **More details, like node requirements, are at [node client install](https://github.com/NGPU-Community/ngpu-install-script)**.
 #### **You may need to wait for the network to measure your PC after installation, esp. the storage is more than 1000 GB**.
 
 
@@ -382,7 +382,7 @@ Parameter:
 - --image_url: URL Address of the Image
 - --text: Spoken Content in the Video
 - --pronouncer：Speaker used in the video
-- --btc_address：BTC address (used to check for AINN and other BRC20 assets)
+- --btc_address：BTC address (used to check for ngpu and other BRC20 assets)
 - --logo_url：Logo cloud address used in the video
 
 #### 2. **task_query**
@@ -399,7 +399,7 @@ Parameter:
 ### **_Operation Steps_**
 1. **Step One**: Generate a video from photos using an AI interface.
 ```shell
-$ python3 main.py p2s_medium --image_url https://ainngpu.io/anvd/20240413151149713027.png --text Hello\ everyone,\ I\ am\ AI-generated\ Musk --pronouncer en-US-GuyNeural --backGroundName https://ainngpu.io/anvd/background/AINN_BG.png --btc_address bc1pp8vyhh2ma0ntzjwr26xxrn5r0w296yu68wdwle5rrhgtv3a2lgkqtyayus
+$ python3 main.py p2s_medium --image_url https://www.ngpu.ai/anvd/20240413151149713027.png --text Hello\ everyone,\ I\ am\ AI-generated\ Musk --pronouncer en-US-GuyNeural --backGroundName https://ngpu.ai/anvd/background/AINN_BG.png --btc_address bc1pp8vyhh2ma0ntzjwr26xxrn5r0w296yu68wdwle5rrhgtv3a2lgkqtyayus
 ```
 <span style="color:red;">Return the task ID and the URL address of the generated video </span>
 
@@ -439,7 +439,7 @@ Response:
 ```
 
 Parameter:
-- --btcaddress: BTC address (used to check for AINN and other BRC20 assets)
+- --btcaddress: BTC address (used to check for ngpu and other BRC20 assets)
 - --workspaceid: Spoken Content in the Video
 - --taskid： Task ID
 - --requrl：Request Path
