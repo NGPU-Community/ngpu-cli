@@ -1,6 +1,6 @@
 NGPU-Cli
 =======
-python cmd for ngpu main api calls.
+python cmd for NGPU main api calls.
 -----------
 
 # 1：Workspace Distribution and Usage
@@ -382,7 +382,7 @@ Parameter:
 - --image_url: URL Address of the Image
 - --text: Spoken Content in the Video
 - --pronouncer：Speaker used in the video
-- --btc_address：BTC address (used to check for ngpu and other BRC20 assets)
+- --btc_address：BTC address (used to check for NGPU and other BRC20 assets)
 - --logo_url：Logo cloud address used in the video
 
 #### 2. **task_query**
@@ -439,7 +439,7 @@ Response:
 ```
 
 Parameter:
-- --btcaddress: BTC address (used to check for ngpu and other BRC20 assets)
+- --btcaddress: BTC address (used to check for NGPU and other BRC20 assets)
 - --workspaceid: Spoken Content in the Video
 - --taskid： Task ID
 - --requrl：Request Path
