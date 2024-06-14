@@ -7,7 +7,7 @@ from datetime import datetime
 
 import requests
 
-from cli import CLOUD_HOST
+from cli import CLOUD_HOST, API_SERVER_HOST
 from utils.cloud_utils import mock_login_cloud
 import base64
 from PIL import Image
@@ -91,7 +91,7 @@ def demo(args):
     print("use workspace to create task")
 
     # TODO create task
-    url = "https://ainngpu.io/user/createImage"
+    url = f"{API_SERVER_HOST}/user/createImage"
     # bc1pp8vyhh2ma0ntzjwr26xxrn5r0w296yu68wdwle5rrhgtv3a2lgkqtyayus
     btc_addr = 'bc1pp8vyhh2ma0ntzjwr26xxrn5r0w296yu68wdwle5rrhgtv3a2lgkqtyayus'
     headers1 = {
@@ -156,7 +156,7 @@ def demo(args):
         return
 
     # waiting task result
-    url = 'https://ainngpu.io/user/getImage?taskID={}'.format(task_id)
+    url = f'{API_SERVER_HOST}/user/getImage?taskID={task_id}'
     while True:
         print("waiting ai task ready, 60s after retry...")
         response = requests.get(url)
