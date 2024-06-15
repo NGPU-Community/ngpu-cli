@@ -87,7 +87,7 @@ def demo(args):
     print("workspace ready finish")
 
     # TODO check docker start
-
+    time.sleep(60)
     print("use workspace to create task")
 
     # TODO create task

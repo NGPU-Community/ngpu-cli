@@ -12,4 +12,4 @@ logging.basicConfig(level=logging.INFO,
 
 CLOUD_HOST = 'http://94.74.73.189:8070'
 # CLOUD_HOST = 'http://localhost:8070'
-API_SERVER_HOST = 'http://94.74.73.189:9091'
+API_SERVER_HOST = 'http://94.74.73.189:8091'
