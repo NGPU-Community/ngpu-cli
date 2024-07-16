@@ -96,7 +96,7 @@ def demo(args):
     btc_addr = 'bc1pp8vyhh2ma0ntzjwr26xxrn5r0w296yu68wdwle5rrhgtv3a2lgkqtyayus'
     headers1 = {
         'BtcAddress': btc_addr,
-        'Authorization': str(workspace_id),
+        'Authorization': 'ngpu_' + str(workspace_id),
         'Content-Type': 'application/json',
     }
 

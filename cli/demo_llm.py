@@ -92,7 +92,7 @@ def demo_llm(args):
         url = 'https://ainngpu.io/user/schedulingTask?paramUrl=startSync&paramPort=8075'
         headers = {
             'Content-Type': 'application/json',
-            'Authorization': f'Bearer {workspace_id}',
+            'Authorization': f'Bearer ngpu_{workspace_id}',
         }
         body = {
             "btc_address": "bc1pp8vyhh2ma0ntzjwr26xxrn5r0w296yu68wdwle5rrhgtv3a2lgkqtyayus",
